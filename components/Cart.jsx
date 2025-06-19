@@ -1,11 +1,6 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiOutlineLeft,
-  AiOutlineShopping,
-} from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 
@@ -15,14 +10,8 @@ import getStripe from '../lib/getStripe';
 
 const Cart = () => {
   const cartRef = useRef();
-  const {
-    totalPrice,
-    totalQuantities,
-    cartItems,
-    setShowCart,
-    toggleCartItemQuanitity,
-    onRemove,
-  } = useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } =
+    useStateContext();
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -47,11 +36,7 @@ const Cart = () => {
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
-        <button
-          type="button"
-          className="cart-heading"
-          onClick={() => setShowCart(false)}
-        >
+        <button type="button" className="cart-heading" onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
           <span className="heading">Your Cart</span>
           <span className="cart-num-items">({totalQuantities} items)</span>
@@ -62,11 +47,7 @@ const Cart = () => {
             <AiOutlineShopping size={150} />
             <h3>Your shopping bag is empty</h3>
             <Link href="/">
-              <button
-                type="button"
-                onClick={() => setShowCart(false)}
-                className="btn"
-              >
+              <button type="button" onClick={() => setShowCart(false)} className="btn">
                 Continue Shopping
               </button>
             </Link>
@@ -77,10 +58,7 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                <img
-                  src={urlFor(item?.image[0])}
-                  className="cart-product-image"
-                />
+                <img src={urlFor(item?.image[0])} className="cart-product-image" />
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.name}</h5>
@@ -91,9 +69,7 @@ const Cart = () => {
                       <p className="quantity-desc">
                         <span
                           className="minus"
-                          onClick={() =>
-                            toggleCartItemQuanitity(item._id, 'dec')
-                          }
+                          onClick={() => toggleCartItemQuanitity(item._id, 'dec')}
                         >
                           <AiOutlineMinus />
                         </span>
@@ -102,19 +78,13 @@ const Cart = () => {
                         </span>
                         <span
                           className="plus"
-                          onClick={() =>
-                            toggleCartItemQuanitity(item._id, 'inc')
-                          }
+                          onClick={() => toggleCartItemQuanitity(item._id, 'inc')}
                         >
                           <AiOutlinePlus />
                         </span>
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      className="remove-item"
-                      onClick={() => onRemove(item)}
-                    >
+                    <button type="button" className="remove-item" onClick={() => onRemove(item)}>
                       <TiDeleteOutline />
                     </button>
                   </div>

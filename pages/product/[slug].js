@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiFillStar,
-  AiOutlineStar,
-} from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
@@ -26,19 +21,14 @@ const ProductDetails = ({ product, products }) => {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img
-              src={urlFor(image && image[index])}
-              className="product-detail-image"
-            />
+            <img src={urlFor(image && image[index])} className="product-detail-image" />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
               <img
                 key={i}
                 src={urlFor(item)}
-                className={
-                  i === index ? 'small-image selected-image' : 'small-image'
-                }
+                className={i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
               />
             ))}
@@ -73,11 +63,7 @@ const ProductDetails = ({ product, products }) => {
             </p>
           </div>
           <div className="buttons">
-            <button
-              type="button"
-              className="add-to-cart"
-              onClick={() => onAdd(product, qty)}
-            >
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
               Add to Cart
             </button>
             <button type="button" className="buy-now" onClick={handleBuyNow}>
