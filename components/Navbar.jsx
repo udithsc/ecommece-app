@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-gray-100 py-2 text-sm">
+      <div className="bg-gray-100 py-2 text-sm hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-4 text-gray-600">
             <span>About Us</span>
@@ -55,8 +55,8 @@ const Navbar = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="flex-1 max-w-2xl mx-8">
-              <div className="relative">
+            <div className="hidden md:flex flex-1 max-w-2xl mx-8">
+              <div className="relative w-full">
                 <input
                   type="text"
                   placeholder="Search over 10,000 products"
@@ -71,15 +71,30 @@ const Navbar = () => {
             </div>
 
             {/* Right Side */}
-            <div className="flex items-center space-x-6">
-              {/* Customer Service */}
-              <div className="flex items-center space-x-2 text-gray-600">
+            <div className="flex items-center space-x-2 md:space-x-6">
+              {/* Customer Service - Hidden on mobile */}
+              <div className="hidden lg:flex items-center space-x-2 text-gray-600">
                 <FiPhone className="w-5 h-5" />
                 <div className="text-sm">
                   <div className="text-xs">Customer Service</div>
                   <div className="font-semibold">(800) 060-0730</div>
                 </div>
               </div>
+
+              {/* Search Button for Mobile */}
+              <button className="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                <AiOutlineSearch className="w-6 h-6" />
+              </button>
+
+              {/* Wishlist - Mobile */}
+              <Link href="/wishlist" className="md:hidden relative p-2 text-gray-600 hover:text-gray-900">
+                <AiOutlineHeart className="w-6 h-6" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                    {wishlistCount}
+                  </span>
+                )}
+              </Link>
 
               {/* Cart */}
               <Link href="/cart" className="relative p-2 text-gray-600 hover:text-gray-900">
@@ -92,9 +107,9 @@ const Navbar = () => {
               </Link>
 
               {/* User */}
-              <button className="p-2 text-gray-600 hover:text-gray-900">
+              <Link href="/account" className="hidden md:block p-2 text-gray-600 hover:text-gray-900">
                 <AiOutlineUser className="w-6 h-6" />
-              </button>
+              </Link>
 
               {/* Mobile Menu Button */}
               <button
@@ -161,20 +176,92 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200">
-          <div className="px-4 py-2 space-y-2">
-            <Link href="/" className="block py-2 text-gray-900">
+        <div className="md:hidden bg-white border-b border-gray-200 shadow-lg">
+          {/* Mobile Search */}
+          <div className="px-4 py-3 border-b border-gray-100">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-4 pr-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+              <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <AiOutlineSearch className="w-5 h-5 text-gray-400" />
+              </button>
+            </div>
+          </div>
+          
+          {/* Mobile Navigation Links */}
+          <div className="px-4 py-2 space-y-1">
+            <Link 
+              href="/" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Home
             </Link>
-            <Link href="/shop" className="block py-2 text-gray-900">
+            <Link 
+              href="/shop" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Shop
             </Link>
-            <Link href="/account" className="block py-2 text-gray-900">
+            <Link 
+              href="/account" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Account
             </Link>
-            <Link href="/blog" className="block py-2 text-gray-900">
+            <Link 
+              href="/about" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About Us
+            </Link>
+            <Link 
+              href="/contact" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <Link 
+              href="/blog" 
+              className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Blog
             </Link>
+          </div>
+
+          {/* Mobile User Actions */}
+          <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
+            <div className="flex items-center justify-between">
+              <Link 
+                href="/wishlist" 
+                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <AiOutlineHeart className="w-5 h-5" />
+                <span>Wishlist ({wishlistCount})</span>
+              </Link>
+              <Link 
+                href="/account" 
+                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <AiOutlineUser className="w-5 h-5" />
+                <span>Login</span>
+              </Link>
+            </div>
+            <div className="mt-3 text-sm text-gray-600">
+              <div>Customer Service: <span className="font-semibold">(800) 060-0730</span></div>
+            </div>
           </div>
         </div>
       )}

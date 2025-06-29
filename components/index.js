@@ -17,3 +17,4 @@ export { default as CartPage } from './CartPage';
 export { default as WishlistPage } from './WishlistPage';
 export { default as ContactPage } from './ContactPage';
 export { default as AboutContent } from './AboutContent';
+export { default as PWAInstaller } from './PWAInstaller';

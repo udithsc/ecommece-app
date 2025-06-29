@@ -4,6 +4,7 @@ import React from 'react';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
+import PWAInstaller from './PWAInstaller';
 
 const Layout = ({ children }) => {
   return (
@@ -15,6 +16,7 @@ const Layout = ({ children }) => {
       <footer>
         <Footer />
       </footer>
+      <PWAInstaller />
     </div>
   );
 };
