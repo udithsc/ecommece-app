@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AiOutlineHeart, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import { useWishlist } from '../context/WishlistContext';
 import { useStateContext } from '../context/StateContext';
@@ -34,9 +35,11 @@ const Product = ({ product }) => {
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
       <div className="relative">
         <Link href={`/product/${slug}`}>
-          <img
+          <Image
             src={image && image[0]}
             alt={name}
+            width={555}
+            height={555}
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </Link>

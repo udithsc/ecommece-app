@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 const FooterBanner = ({
   footerBanner: {
     discount,
@@ -33,7 +35,13 @@ const FooterBanner = ({
           </Link>
         </div>
 
-        <img src={image} className="footer-banner-image" />
+        <Image
+          src={image}
+          alt="footer-banner"
+          width={555}
+          height={555}
+          className="footer-banner-image"
+        />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -91,23 +92,27 @@ const ProductDetail = ({ product, products }) => {
                     ))}
                   </div>
                 )}
-                <img
+                <Image
                   src={image && image[index]}
-                  className="w-full h-96 object-cover rounded-lg"
                   alt={name}
+                  width={555}
+                  height={555}
+                  className="w-full h-96 object-cover rounded-lg"
                 />
               </div>
 
               <div className="grid grid-cols-4 gap-2">
                 {image?.map((item, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={item}
+                    alt={`${name} view ${i + 1}`}
+                    width={555}
+                    height={555}
                     className={`w-full h-20 object-cover rounded cursor-pointer transition-all ${
                       i === index ? 'ring-2 ring-green-500' : 'hover:opacity-75'
                     }`}
                     onMouseEnter={() => setIndex(i)}
-                    alt={`${name} view ${i + 1}`}
                   />
                 ))}
               </div>

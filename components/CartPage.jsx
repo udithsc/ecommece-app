@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineClose, AiOutlineGift } from 'react-icons/ai';
 import { FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
@@ -90,9 +91,11 @@ const CartPage = () => {
                           <td className="p-4">
                             <div className="flex items-center space-x-4">
                               <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
-                                <img
+                                <Image
                                   src={item.image[0]}
                                   alt={item.name}
+                                  width={555}
+                                  height={555}
                                   className="w-full h-full object-cover"
                                 />
                               </div>

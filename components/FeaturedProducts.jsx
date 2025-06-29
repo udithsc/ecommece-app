@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -99,9 +100,11 @@ const FeaturedProducts = ({ products }) => {
                   </div>
                 )}
                 <Link href={`/product/${product.slug}`}>
-                  <img
+                  <Image
                     src={product.image[0]}
                     alt={product.name}
+                    width={555}
+                    height={555}
                     className="w-full h-64 object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
                   />
                 </Link>

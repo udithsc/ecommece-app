@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AiFillInstagram, AiOutlineTwitter, AiFillFacebook, AiFillYoutube } from 'react-icons/ai';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
@@ -203,9 +203,11 @@ const Footer = () => {
                 Terms of Service
               </Link>
               <div className="flex space-x-2">
-                <img
-                  src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
+                <Image
+                  src="/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
                   alt="Payment"
+                  width={24}
+                  height={24}
                   className="h-6"
                 />
               </div>

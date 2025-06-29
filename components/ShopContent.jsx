@@ -1,7 +1,5 @@
-'use client';
-
-import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { HiOutlineViewGrid, HiOutlineViewList } from 'react-icons/hi';
 import { BsFilter } from 'react-icons/bs';
@@ -89,9 +87,11 @@ const ShopContent = ({ products }) => {
           </div>
         )}
         <Link href={`/product/${product.slug}`}>
-          <img
+          <Image
             src={product.image[0]}
             alt={product.name}
+            width={555}
+            height={555}
             className={`object-cover cursor-pointer hover:scale-105 transition-transform duration-300 ${
               isListView ? 'w-48 h-48' : 'w-full h-64'
             }`}

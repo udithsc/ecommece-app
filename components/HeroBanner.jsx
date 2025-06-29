@@ -1,7 +1,5 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AiOutlineMenu, AiOutlineRight } from 'react-icons/ai';
 import { FiTruck, FiHeadphones, FiShield, FiRefreshCw } from 'react-icons/fi';
 
@@ -97,9 +95,11 @@ const HeroBanner = ({ heroBanner }) => {
                 </div>
                 <div className="flex-1 relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
+                    <Image
+                      src="/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
                       alt="Featured Products"
+                      width={555}
+                      height={555}
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
