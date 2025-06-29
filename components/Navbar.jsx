@@ -87,7 +87,10 @@ const Navbar = () => {
               </button>
 
               {/* Wishlist - Mobile */}
-              <Link href="/wishlist" className="md:hidden relative p-2 text-gray-600 hover:text-gray-900">
+              <Link
+                href="/wishlist"
+                className="md:hidden relative p-2 text-gray-600 hover:text-gray-900"
+              >
                 <AiOutlineHeart className="w-6 h-6" />
                 {wishlistCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
@@ -107,7 +110,10 @@ const Navbar = () => {
               </Link>
 
               {/* User */}
-              <Link href="/account" className="hidden md:block p-2 text-gray-600 hover:text-gray-900">
+              <Link
+                href="/account"
+                className="hidden md:block p-2 text-gray-600 hover:text-gray-900"
+              >
                 <AiOutlineUser className="w-6 h-6" />
               </Link>
 
@@ -192,46 +198,46 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Mobile Navigation Links */}
           <div className="px-4 py-2 space-y-1">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              href="/shop" 
+            <Link
+              href="/shop"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Shop
             </Link>
-            <Link 
-              href="/account" 
+            <Link
+              href="/account"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Account
             </Link>
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About Us
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
             </Link>
-            <Link 
-              href="/blog" 
+            <Link
+              href="/blog"
               className="block py-3 px-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -242,16 +248,16 @@ const Navbar = () => {
           {/* Mobile User Actions */}
           <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
             <div className="flex items-center justify-between">
-              <Link 
-                href="/wishlist" 
+              <Link
+                href="/wishlist"
                 className="flex items-center space-x-2 text-gray-600 hover:text-gray-900"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <AiOutlineHeart className="w-5 h-5" />
                 <span>Wishlist ({wishlistCount})</span>
               </Link>
-              <Link 
-                href="/account" 
+              <Link
+                href="/account"
                 className="flex items-center space-x-2 text-gray-600 hover:text-gray-900"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -260,7 +266,9 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="mt-3 text-sm text-gray-600">
-              <div>Customer Service: <span className="font-semibold">(800) 060-0730</span></div>
+              <div>
+                Customer Service: <span className="font-semibold">(800) 060-0730</span>
+              </div>
             </div>
           </div>
         </div>
