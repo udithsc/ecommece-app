@@ -4,7 +4,7 @@ import { WishlistProvider } from '../context/WishlistContext';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'UDT Store - Complete E-commerce Solution',
+  title: 'UDT STORE - Complete E-commerce Solution',
   description: 'Modern e-commerce store with tools, electronics, and more',
 };
 

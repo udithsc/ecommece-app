@@ -50,6 +50,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
+                <AiOutlineShopping className="w-12 h-12 ml-2" />
                 <div className="text-2xl font-bold text-gray-900">UDT STORE</div>
               </Link>
             </div>
