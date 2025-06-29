@@ -68,16 +68,14 @@ const CategorySection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Categories</h2>
-          <p className="text-gray-600">
-            Explore our wide range of computer and phone accessories
-          </p>
+          <p className="text-gray-600">Explore our wide range of computer and phone accessories</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+              href={`/shop?category=${encodeURIComponent(category.name.toLowerCase())}`}
               className="group"
             >
               <div

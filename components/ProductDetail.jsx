@@ -14,20 +14,22 @@ import {
 import { BsCheck } from 'react-icons/bs';
 
 import { Product } from './';
-import { useStateContext } from '../context/StateContext';
-import { useWishlist } from '../context/WishlistContext';
+import useCartStore from '../stores/cartStore';
+import useWishlistStore from '../stores/wishlistStore';
+import { useRouter } from 'next/navigation';
 
 const ProductDetail = ({ product, products }) => {
   const { image, name, details, price, originalPrice, rating, reviews, category, inStock, badges } =
     product;
   const [index, setIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('description');
-  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const router = useRouter();
+  const { decQty, incQty, qty, onAdd } = useCartStore();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
 
   const handleBuyNow = () => {
     onAdd(product, qty);
-    setShowCart(true);
+    router.push('/cart');
   };
 
   const renderStars = (rating) => {

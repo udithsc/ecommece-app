@@ -5,11 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineClose, AiOutlineGift } from 'react-icons/ai';
 import { FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
-import { useStateContext } from '../context/StateContext';
+import useCartStore from '../stores/cartStore';
 
 const CartPage = () => {
-  const { cartItems, totalPrice, totalQuantities, onRemove, toggleCartItemQuanitity } =
-    useStateContext();
+  const { cartItems, totalPrice, totalQuantities, onRemove, toggleCartItemQuantity } =
+    useCartStore();
   const [couponCode, setCouponCode] = useState('');
 
   const shippingCost = 25.0;
@@ -110,14 +110,14 @@ const CartPage = () => {
                           <td className="p-4">
                             <div className="flex items-center justify-center space-x-2">
                               <button
-                                onClick={() => toggleCartItemQuanitity(item._id, 'dec')}
+                                onClick={() => toggleCartItemQuantity(item._id, 'dec')}
                                 className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                               >
                                 <AiOutlineMinus className="w-3 h-3" />
                               </button>
                               <span className="w-12 text-center font-medium">{item.quantity}</span>
                               <button
-                                onClick={() => toggleCartItemQuanitity(item._id, 'inc')}
+                                onClick={() => toggleCartItemQuantity(item._id, 'inc')}
                                 className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                               >
                                 <AiOutlinePlus className="w-3 h-3" />

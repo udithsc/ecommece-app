@@ -13,13 +13,12 @@ import {
 import { FiPhone } from 'react-icons/fi';
 import Image from 'next/image';
 
-import { Cart } from './';
-import { useStateContext } from '../context/StateContext';
-import { useWishlist } from '../context/WishlistContext';
+import useCartStore from '../stores/cartStore';
+import { useWishlistCount } from '../stores/wishlistStore';
 
 const Navbar = () => {
-  const { showCart, setShowCart, totalQuantities } = useStateContext();
-  const { wishlistCount } = useWishlist();
+  const { totalQuantities } = useCartStore();
+  const wishlistCount = useWishlistCount();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -83,17 +82,14 @@ const Navbar = () => {
               </div>
 
               {/* Cart */}
-              <button
-                onClick={() => setShowCart(true)}
-                className="relative p-2 text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/cart" className="relative p-2 text-gray-600 hover:text-gray-900">
                 <AiOutlineShopping className="w-6 h-6" />
                 {totalQuantities > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {totalQuantities}
                   </span>
                 )}
-              </button>
+              </Link>
 
               {/* User */}
               <button className="p-2 text-gray-600 hover:text-gray-900">
@@ -182,8 +178,6 @@ const Navbar = () => {
           </div>
         </div>
       )}
-
-      {showCart && <Cart />}
     </>
   );
 };

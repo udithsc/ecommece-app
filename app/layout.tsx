@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import { StateContext } from '../context/StateContext';
-import { WishlistProvider } from '../context/WishlistContext';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
@@ -11,11 +9,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <StateContext>
-          <WishlistProvider>{children}</WishlistProvider>
-        </StateContext>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

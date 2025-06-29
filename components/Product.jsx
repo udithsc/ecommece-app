@@ -4,12 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AiOutlineHeart, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai';
-import { useWishlist } from '../context/WishlistContext';
-import { useStateContext } from '../context/StateContext';
+import useWishlistStore from '../stores/wishlistStore';
+import useCartStore from '../stores/cartStore';
 
 const Product = ({ product }) => {
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
-  const { onAdd } = useStateContext();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
+  const { onAdd } = useCartStore();
 
   const { image, name, slug, price, _id } = product;
   const inWishlist = isInWishlist(_id);

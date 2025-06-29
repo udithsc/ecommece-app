@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useStateContext } from '../context/StateContext';
+import useCartStore from '../stores/cartStore';
 
 const CheckoutForm = () => {
-  const { cartItems, totalPrice, totalQuantities } = useStateContext();
+  const { cartItems, totalPrice, totalQuantities } = useCartStore();
   const [selectedPayment, setSelectedPayment] = useState('bank-transfer');
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 

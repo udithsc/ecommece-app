@@ -56,7 +56,7 @@ const HeroBanner = ({ heroBanner }) => {
                 {categories.map((category, index) => (
                   <Link
                     key={index}
-                    href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/shop?category=${encodeURIComponent(category.name.toLowerCase())}`}
                     className="flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors duration-200 border-b border-gray-100"
                   >
                     <div className="flex items-center space-x-3">

@@ -7,13 +7,13 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 
-import { useStateContext } from '../context/StateContext';
+import useCartStore from '../stores/cartStore';
 import getStripe from '../lib/getStripe';
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } =
-    useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } =
+    useCartStore();
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -77,7 +77,7 @@ const Cart = () => {
                       <p className="quantity-desc">
                         <span
                           className="minus"
-                          onClick={() => toggleCartItemQuanitity(item._id, 'dec')}
+                          onClick={() => toggleCartItemQuantity(item._id, 'dec')}
                         >
                           <AiOutlineMinus />
                         </span>
@@ -86,7 +86,7 @@ const Cart = () => {
                         </span>
                         <span
                           className="plus"
-                          onClick={() => toggleCartItemQuanitity(item._id, 'inc')}
+                          onClick={() => toggleCartItemQuantity(item._id, 'inc')}
                         >
                           <AiOutlinePlus />
                         </span>

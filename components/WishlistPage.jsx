@@ -1,13 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { AiOutlineClose, AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
-import { useWishlist } from '../context/WishlistContext';
-import { useStateContext } from '../context/StateContext';
+import useWishlistStore from '../stores/wishlistStore';
+import useCartStore from '../stores/cartStore';
 
 const WishlistPage = () => {
-  const { wishlistItems, removeFromWishlist, clearWishlist } = useWishlist();
-  const { onAdd } = useStateContext();
+  const { wishlistItems, removeFromWishlist, clearWishlist } = useWishlistStore();
+  const { onAdd } = useCartStore();
 
   const handleAddToCart = (product) => {
     onAdd(product, 1);

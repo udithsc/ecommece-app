@@ -1,20 +1,55 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import {
+  AiFillStar,
+  AiOutlineStar,
+  AiOutlineHeart,
+  AiFillHeart,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai';
 import { HiOutlineViewGrid, HiOutlineViewList } from 'react-icons/hi';
 import { BsFilter } from 'react-icons/bs';
+import useCartStore from '../stores/cartStore';
+import useWishlistStore from '../stores/wishlistStore';
 
 const ShopContent = ({ products }) => {
+  const searchParams = useSearchParams();
   const [sortBy, setSortBy] = useState('name');
   const [filterCategory, setFilterCategory] = useState('all');
   const [priceRange, setPriceRange] = useState({ min: 0, max: 2000 });
   const [viewMode, setViewMode] = useState('grid');
   const [showFilters, setShowFilters] = useState(false);
 
+  // Zustand stores
+  const { onAdd } = useCartStore();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
+
+  // Handle URL category parameter
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setFilterCategory(categoryParam.toLowerCase());
+    }
+  }, [searchParams]);
+
   const categories = useMemo(() => {
-    const cats = ['all', 'Laptops', 'Smartphones', 'Audio', 'Peripherals', 'Storage', 'Wearables', 'Accessories', 'Networking'];
+    const cats = [
+      'all',
+      'Laptops',
+      'Smartphones',
+      'Audio',
+      'Peripherals',
+      'Storage',
+      'Wearables',
+      'Accessories',
+      'Networking',
+    ];
     return cats;
-  }, [products]);
+  }, []);
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = products || [];
@@ -63,76 +98,133 @@ const ShopContent = ({ products }) => {
     return stars;
   };
 
-  const ProductCard = ({ product, isListView = false }) => (
-    <div
-      className={`bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${isListView ? 'flex' : ''}`}
-    >
-      <div className={`relative ${isListView ? 'flex-shrink-0' : ''}`}>
-        {product.badges && product.badges.length > 0 && (
-          <div className="absolute top-3 left-3 z-10">
-            {product.badges.map((badge, index) => (
-              <span
-                key={index}
-                className={`px-2 py-1 text-xs font-bold rounded-full uppercase ${
-                  badge === 'SALE'
-                    ? 'bg-red-100 text-red-800'
-                    : badge === 'HOT'
-                      ? 'bg-orange-100 text-orange-800'
-                      : 'bg-blue-100 text-blue-800'
-                }`}
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
-        )}
-        <Link href={`/product/${product.slug}`}>
-          <Image
-            src={product.image[0]}
-            alt={product.name}
-            width={555}
-            height={555}
-            className={`object-cover cursor-pointer hover:scale-105 transition-transform duration-300 ${
-              isListView ? 'w-48 h-48' : 'w-full h-64'
-            }`}
-          />
-        </Link>
-      </div>
+  const ProductCard = ({ product, isListView = false }) => {
+    const inWishlist = isInWishlist(product._id);
 
-      <div className={`p-4 ${isListView ? 'flex-1' : ''}`}>
-        <Link href={`/product/${product.slug}`}>
-          <h3
-            className={`font-medium text-gray-900 mb-2 hover:text-green-600 cursor-pointer ${
-              isListView ? 'text-lg' : 'text-sm'
-            }`}
+    const handleWishlistToggle = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (inWishlist) {
+        removeFromWishlist(product._id);
+      } else {
+        addToWishlist(product);
+      }
+    };
+
+    const handleAddToCart = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onAdd(product, 1);
+    };
+
+    return (
+      <div
+        className={`bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 group ${isListView ? 'flex' : ''}`}
+      >
+        <div className={`relative ${isListView ? 'flex-shrink-0' : ''}`}>
+          {product.badges && product.badges.length > 0 && (
+            <div className="absolute top-3 left-3 z-10">
+              {product.badges.map((badge, index) => (
+                <span
+                  key={index}
+                  className={`px-2 py-1 text-xs font-bold rounded-full uppercase ${
+                    badge === 'SALE'
+                      ? 'bg-red-100 text-red-800'
+                      : badge === 'HOT'
+                        ? 'bg-orange-100 text-orange-800'
+                        : 'bg-blue-100 text-blue-800'
+                  }`}
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Wishlist Button */}
+          <button
+            onClick={handleWishlistToggle}
+            className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow duration-200 z-10"
           >
-            {product.name}
-          </h3>
-        </Link>
+            {inWishlist ? (
+              <AiFillHeart className="w-4 h-4 text-red-500" />
+            ) : (
+              <AiOutlineHeart className="w-4 h-4 text-gray-400 hover:text-red-500" />
+            )}
+          </button>
 
-        <div className="flex items-center mb-2">
-          <div className="flex space-x-1">{renderStars(product.rating)}</div>
-          <span className="text-sm text-gray-500 ml-2">({product.reviews})</span>
+          <Link href={`/product/${product.slug}`}>
+            <Image
+              src={product.image[0]}
+              alt={product.name}
+              width={555}
+              height={555}
+              className={`object-cover cursor-pointer hover:scale-105 transition-transform duration-300 ${
+                isListView ? 'w-48 h-48' : 'w-full h-64'
+              }`}
+            />
+          </Link>
+
+          {/* Add to Cart Button - Shows on Hover */}
+          {!isListView && (
+            <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button
+                onClick={handleAddToCart}
+                className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium text-sm flex items-center justify-center space-x-2"
+              >
+                <AiOutlineShoppingCart className="w-4 h-4" />
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          )}
         </div>
 
-        {isListView && <p className="text-gray-600 mb-3">{product.details}</p>}
+        <div className={`p-4 ${isListView ? 'flex-1' : ''}`}>
+          <Link href={`/product/${product.slug}`}>
+            <h3
+              className={`font-medium text-gray-900 mb-2 hover:text-green-600 cursor-pointer ${
+                isListView ? 'text-lg' : 'text-sm'
+              }`}
+            >
+              {product.name}
+            </h3>
+          </Link>
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className={`font-bold text-gray-900 ${isListView ? 'text-xl' : 'text-lg'}`}>
-              ${product.price.toFixed(2)}
-            </span>
-            {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
-                ${product.originalPrice.toFixed(2)}
+          <div className="flex items-center mb-2">
+            <div className="flex space-x-1">{renderStars(product.rating)}</div>
+            <span className="text-sm text-gray-500 ml-2">({product.reviews})</span>
+          </div>
+
+          {isListView && <p className="text-gray-600 mb-3">{product.details}</p>}
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className={`font-bold text-gray-900 ${isListView ? 'text-xl' : 'text-lg'}`}>
+                ${product.price.toFixed(2)}
               </span>
+              {product.originalPrice && (
+                <span className="text-sm text-gray-500 line-through">
+                  ${product.originalPrice.toFixed(2)}
+                </span>
+              )}
+            </div>
+            {isListView ? (
+              <button
+                onClick={handleAddToCart}
+                className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium text-sm flex items-center space-x-2"
+              >
+                <AiOutlineShoppingCart className="w-4 h-4" />
+                <span>Add to Cart</span>
+              </button>
+            ) : (
+              <span className="text-sm text-green-600 font-medium">{product.category}</span>
             )}
           </div>
-          <span className="text-sm text-green-600 font-medium">{product.category}</span>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
