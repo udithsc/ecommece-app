@@ -5,14 +5,14 @@ import { FiTruck, FiHeadphones, FiShield, FiRefreshCw } from 'react-icons/fi';
 
 const HeroBanner = ({ heroBanner }) => {
   const categories = [
-    { name: 'Fruits & Vegetables', icon: '🥕' },
-    { name: 'Dairy & Bakery', icon: '🥛' },
-    { name: 'Meat & Seafood', icon: '🐟' },
-    { name: 'Beverages', icon: '🥤' },
-    { name: 'Breakfast & Cereal', icon: '🥣' },
-    { name: 'Frozen Foods', icon: '❄️' },
-    { name: 'Biscuits & Snacks', icon: '🍪' },
-    { name: 'Grocery & Staples', icon: '🌾' },
+    { name: 'Laptops', icon: '💻' },
+    { name: 'Smartphones', icon: '📱' },
+    { name: 'Audio', icon: '🎧' },
+    { name: 'Peripherals', icon: '🖱️' },
+    { name: 'Storage', icon: '💾' },
+    { name: 'Wearables', icon: '⌚' },
+    { name: 'Accessories', icon: '🔌' },
+    { name: 'Networking', icon: '📡' },
   ];
 
   const services = [
@@ -74,17 +74,17 @@ const HeroBanner = ({ heroBanner }) => {
               <div className="flex h-96">
                 <div className="flex-1 p-12 flex flex-col justify-center">
                   <div className="text-sm text-primary font-medium mb-2">
-                    Best Deal Online on Smart Watches
+                    Best Deals on Electronics
                   </div>
                   <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
                     Get up to
                     <br />
-                    <span className="text-primary">-30% off</span>
+                    <span className="text-primary">-50% off</span>
                   </h1>
                   <p className="text-gray-600 mb-6">
-                    Don&apos;t miss out on our amazing grocery deals!
+                    Don&apos;t miss out on our amazing tech deals!
                     <br />
-                    Fresh products at unbeatable prices.
+                    High-quality products at unbeatable prices.
                   </p>
                   <Link href="/shop">
                     <button className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold inline-flex items-center">
@@ -107,7 +107,7 @@ const HeroBanner = ({ heroBanner }) => {
                   <div className="absolute top-8 right-8 bg-white rounded-full p-4 shadow-lg">
                     <div className="text-center">
                       <div className="text-xs text-gray-500">Only</div>
-                      <div className="text-xl font-bold text-primary">$79</div>
+                      <div className="text-xl font-bold text-primary">$199</div>
                     </div>
                   </div>
                 </div>

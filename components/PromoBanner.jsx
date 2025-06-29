@@ -10,9 +10,9 @@ const PromoBanner = () => {
         <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg overflow-hidden">
           <div className="flex items-center h-40">
             <div className="flex-1 p-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Hundreds Hand Tools</h2>
+              <h2 className="text-3xl font-bold text-white mb-2">Amazing Phone Accessories</h2>
               <p className="text-red-100 mb-4">
-                Hammers, Chisels, Universal Pliers, Ratchets, Squares, Saws
+                Cases, Chargers, Headphones, Screen Protectors, Power Banks
               </p>
               <Link href="/shop">
                 <button className="bg-white text-red-600 px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 font-semibold">

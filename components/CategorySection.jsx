@@ -7,59 +7,59 @@ const CategorySection = () => {
   const categories = [
     {
       id: 1,
-      name: 'Fruits & Vegetables',
-      icon: '🥕',
-      color: 'bg-green-100',
-      hoverColor: 'hover:bg-green-200',
-    },
-    {
-      id: 2,
-      name: 'Dairy & Bakery',
-      icon: '🥛',
+      name: 'Laptops',
+      icon: '💻',
       color: 'bg-blue-100',
       hoverColor: 'hover:bg-blue-200',
     },
     {
+      id: 2,
+      name: 'Smartphones',
+      icon: '📱',
+      color: 'bg-green-100',
+      hoverColor: 'hover:bg-green-200',
+    },
+    {
       id: 3,
-      name: 'Meat & Seafood',
-      icon: '🐟',
-      color: 'bg-red-100',
-      hoverColor: 'hover:bg-red-200',
+      name: 'Audio',
+      icon: '🎧',
+      color: 'bg-purple-100',
+      hoverColor: 'hover:bg-purple-200',
     },
     {
       id: 4,
-      name: 'Beverages',
-      icon: '🥤',
+      name: 'Peripherals',
+      icon: '🖱️',
       color: 'bg-yellow-100',
       hoverColor: 'hover:bg-yellow-200',
     },
     {
       id: 5,
-      name: 'Breakfast & Cereal',
-      icon: '🥣',
-      color: 'bg-orange-100',
-      hoverColor: 'hover:bg-orange-200',
+      name: 'Storage',
+      icon: '💾',
+      color: 'bg-red-100',
+      hoverColor: 'hover:bg-red-200',
     },
     {
       id: 6,
-      name: 'Frozen Foods',
-      icon: '❄️',
-      color: 'bg-cyan-100',
-      hoverColor: 'hover:bg-cyan-200',
+      name: 'Wearables',
+      icon: '⌚',
+      color: 'bg-indigo-100',
+      hoverColor: 'hover:bg-indigo-200',
     },
     {
       id: 7,
-      name: 'Biscuits & Snacks',
-      icon: '🍪',
-      color: 'bg-amber-100',
-      hoverColor: 'hover:bg-amber-200',
+      name: 'Accessories',
+      icon: '🔌',
+      color: 'bg-pink-100',
+      hoverColor: 'hover:bg-pink-200',
     },
     {
       id: 8,
-      name: 'Grocery & Staples',
-      icon: '🌾',
-      color: 'bg-lime-100',
-      hoverColor: 'hover:bg-lime-200',
+      name: 'Networking',
+      icon: '📡',
+      color: 'bg-teal-100',
+      hoverColor: 'hover:bg-teal-200',
     },
   ];
 
@@ -69,7 +69,7 @@ const CategorySection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Categories</h2>
           <p className="text-gray-600">
-            Choose your necessary products from our featured categories
+            Explore our wide range of computer and phone accessories
           </p>
         </div>
 

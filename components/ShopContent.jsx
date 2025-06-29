@@ -12,7 +12,7 @@ const ShopContent = ({ products }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   const categories = useMemo(() => {
-    const cats = ['all', ...new Set(products?.map((p) => p.category) || [])];
+    const cats = ['all', 'Laptops', 'Smartphones', 'Audio', 'Peripherals', 'Storage', 'Wearables', 'Accessories', 'Networking'];
     return cats;
   }, [products]);
 
