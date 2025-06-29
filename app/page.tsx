@@ -1,17 +1,17 @@
-import { getProducts, getBanners } from '../lib/client'
-import { 
-  Layout, 
-  HeroBanner, 
-  FeaturedProducts, 
-  CategorySection, 
-  BestSellers, 
-  PromoBanner, 
-  FooterBanner 
-} from '../components'
+import { getProducts, getBanners } from '../lib/client';
+import {
+  Layout,
+  HeroBanner,
+  FeaturedProducts,
+  CategorySection,
+  BestSellers,
+  PromoBanner,
+  FooterBanner,
+} from '../components';
 
 async function HomePage() {
-  const products = await getProducts()
-  const bannerData = await getBanners()
+  const products = await getProducts();
+  const bannerData = await getBanners();
 
   return (
     <Layout>
@@ -22,7 +22,7 @@ async function HomePage() {
       <BestSellers products={products} />
       <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </Layout>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

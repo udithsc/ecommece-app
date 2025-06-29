@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -11,13 +11,13 @@ const ContactPage = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -33,38 +33,38 @@ const ContactPage = () => {
       address: '1234 Broadway Street, NY 10001',
       phone: '+1 (555) 123-4567',
       email: 'newyork@udtstore.com',
-      hours: 'Mon-Fri: 9:00 AM - 8:00 PM'
+      hours: 'Mon-Fri: 9:00 AM - 8:00 PM',
     },
     {
       city: 'Los Angeles',
       address: '5678 Sunset Boulevard, CA 90028',
       phone: '+1 (555) 987-6543',
       email: 'la@udtstore.com',
-      hours: 'Mon-Fri: 9:00 AM - 8:00 PM'
-    }
+      hours: 'Mon-Fri: 9:00 AM - 8:00 PM',
+    },
   ];
 
   const features = [
     {
       icon: <AiOutlinePercentage className="w-8 h-8" />,
       title: 'Best Prices & Offers',
-      description: 'Cheaper Prices Than Your Local Supermarket'
+      description: 'Cheaper Prices Than Your Local Supermarket',
     },
     {
       icon: <FiShield className="w-8 h-8" />,
       title: '100% Return Policy',
-      description: 'Easy Return Within 30 Days'
+      description: 'Easy Return Within 30 Days',
     },
     {
       icon: <AiOutlinePhone className="w-8 h-8" />,
       title: 'Support 24/7',
-      description: 'Contact us 24 hours a day, 7 days a week'
+      description: 'Contact us 24 hours a day, 7 days a week',
     },
     {
       icon: <AiOutlineGift className="w-8 h-8" />,
       title: 'Great Offer Daily Deal',
-      description: 'When you sign up, you get our awesome offers'
-    }
+      description: 'When you sign up, you get our awesome offers',
+    },
   ];
 
   return (
@@ -73,7 +73,9 @@ const ContactPage = () => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-primary">
+              Home
+            </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-gray-900">Contact</span>
           </nav>
@@ -128,9 +130,7 @@ const ContactPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
                   <select
                     name="subject"
                     value={formData.subject}
@@ -148,9 +148,7 @@ const ContactPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -178,7 +176,9 @@ const ContactPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {storeLocations.map((location, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">{location.city} Store</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    {location.city} Store
+                  </h3>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
                       <FiMapPin className="w-5 h-5 text-primary mt-1" />
@@ -223,9 +223,7 @@ const ContactPage = () => {
             {features.map((feature, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm p-6 text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-primary">
-                    {feature.icon}
-                  </div>
+                  <div className="text-primary">{feature.icon}</div>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
@@ -236,9 +234,7 @@ const ContactPage = () => {
 
         {/* Contact CTA */}
         <div className="mt-16 bg-primary rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Need Immediate Assistance?
-          </h2>
+          <h2 className="text-2xl font-bold text-white mb-4">Need Immediate Assistance?</h2>
           <p className="text-green-100 mb-6">
             Our customer support team is available 24/7 to help you with any questions.
           </p>

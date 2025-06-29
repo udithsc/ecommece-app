@@ -1,12 +1,12 @@
-import { Layout } from '../../components'
-import AccountDashboard from '../../components/AccountDashboard'
+import { Layout } from '../../components';
+import AccountDashboard from '../../components/AccountDashboard';
 
 function AccountPage() {
   return (
     <Layout>
       <AccountDashboard />
     </Layout>
-  )
+  );
 }
 
-export default AccountPage
+export default AccountPage;

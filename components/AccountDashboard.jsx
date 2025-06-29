@@ -1,8 +1,16 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineHeart, AiOutlineSetting, AiOutlineLogout, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import {
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+  AiOutlineHeart,
+  AiOutlineSetting,
+  AiOutlineLogout,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+} from 'react-icons/ai';
 import { BsBox } from 'react-icons/bs';
 
 const AccountDashboard = () => {
@@ -12,27 +20,27 @@ const AccountDashboard = () => {
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [loginData, setLoginData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const [registerData, setRegisterData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
 
   const handleLoginChange = (e) => {
     setLoginData({
       ...loginData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleRegisterChange = (e) => {
     setRegisterData({
       ...registerData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -75,22 +83,22 @@ const AccountDashboard = () => {
       date: '02 April, 2019',
       status: 'Pending',
       total: '$2,719.00',
-      items: 5
+      items: 5,
     },
     {
       id: '#7592',
       date: '28 March, 2019',
       status: 'Pending',
       total: '$374.00',
-      items: 3
+      items: 3,
     },
     {
       id: '#7192',
       date: '15 March, 2019',
       status: 'Shipped',
       total: '$791.00',
-      items: 4
-    }
+      items: 4,
+    },
   ];
 
   const DashboardContent = () => (
@@ -115,7 +123,13 @@ const AccountDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
           <div>
             <p className="font-medium">Address:</p>
-            <p>Random Federation<br />115302, Moscow<br />ul. Varshavskaya, 15-2-178</p>
+            <p>
+              Random Federation
+              <br />
+              115302, Moscow
+              <br />
+              ul. Varshavskaya, 15-2-178
+            </p>
           </div>
           <div>
             <p className="font-medium">Phone Number:</p>
@@ -149,11 +163,15 @@ const AccountDashboard = () => {
                   </td>
                   <td className="py-4 text-gray-600">{order.date}</td>
                   <td className="py-4">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      order.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                      order.status === 'Shipped' ? 'bg-blue-100 text-blue-800' :
-                      'bg-green-100 text-green-800'
-                    }`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        order.status === 'Pending'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : order.status === 'Shipped'
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-green-100 text-green-800'
+                      }`}
+                    >
                       {order.status}
                     </span>
                   </td>
@@ -181,11 +199,15 @@ const AccountDashboard = () => {
                 <p className="text-gray-600">{order.date}</p>
               </div>
               <div className="flex items-center space-x-4">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  order.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                  order.status === 'Shipped' ? 'bg-blue-100 text-blue-800' :
-                  'bg-green-100 text-green-800'
-                }`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    order.status === 'Pending'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : order.status === 'Shipped'
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-green-100 text-green-800'
+                  }`}
+                >
                   {order.status}
                 </span>
                 <span className="font-semibold text-gray-900">{order.total}</span>
@@ -208,50 +230,50 @@ const AccountDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               defaultValue="Helena"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#629D23] focus:border-transparent"
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               defaultValue="Garcia"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#629D23] focus:border-transparent"
             />
           </div>
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-          <input 
-            type="email" 
+          <input
+            type="email"
             defaultValue="stroyka@example.com"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#629D23] focus:border-transparent"
           />
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-          <input 
-            type="tel" 
+          <input
+            type="tel"
             defaultValue="38 972 588-42-36"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#629D23] focus:border-transparent"
           />
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
-          <textarea 
+          <textarea
             rows={3}
             defaultValue="Random Federation, 115302, Moscow, ul. Varshavskaya, 15-2-178"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#629D23] focus:border-transparent"
           />
         </div>
-        
-        <button 
+
+        <button
           type="submit"
           className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200"
         >
@@ -266,9 +288,7 @@ const AccountDashboard = () => {
       <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
       <form onSubmit={handleLogin} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Email Address *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
           <input
             type="email"
             name="email"
@@ -281,12 +301,10 @@ const AccountDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Password *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Password *</label>
           <div className="relative">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               name="password"
               value={loginData.password}
               onChange={handleLoginChange}
@@ -346,9 +364,7 @@ const AccountDashboard = () => {
       <form onSubmit={handleRegister} className="space-y-6">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              First Name *
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
             <input
               type="text"
               name="firstName"
@@ -360,9 +376,7 @@ const AccountDashboard = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Last Name *
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
             <input
               type="text"
               name="lastName"
@@ -376,9 +390,7 @@ const AccountDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Email Address *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
           <input
             type="email"
             name="email"
@@ -391,12 +403,10 @@ const AccountDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Password *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Password *</label>
           <div className="relative">
             <input
-              type={showRegisterPassword ? "text" : "password"}
+              type={showRegisterPassword ? 'text' : 'password'}
               name="password"
               value={registerData.password}
               onChange={handleRegisterChange}
@@ -419,9 +429,7 @@ const AccountDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Confirm Password *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
           <input
             type="password"
             name="confirmPassword"
@@ -497,7 +505,9 @@ const AccountDashboard = () => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="text-sm">
-            <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-gray-700">
+              Home
+            </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-gray-900">Account</span>
           </nav>
@@ -514,8 +524,8 @@ const AccountDashboard = () => {
                 <button
                   onClick={() => setActiveTab('login')}
                   className={`flex-1 py-2 px-4 rounded-lg transition-colors font-medium ${
-                    activeTab === 'login' 
-                      ? 'bg-white text-primary shadow-sm' 
+                    activeTab === 'login'
+                      ? 'bg-white text-primary shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -524,8 +534,8 @@ const AccountDashboard = () => {
                 <button
                   onClick={() => setActiveTab('register')}
                   className={`flex-1 py-2 px-4 rounded-lg transition-colors font-medium ${
-                    activeTab === 'register' 
-                      ? 'bg-white text-primary shadow-sm' 
+                    activeTab === 'register'
+                      ? 'bg-white text-primary shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -533,9 +543,7 @@ const AccountDashboard = () => {
                 </button>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-8">
-                {renderContent()}
-              </div>
+              <div className="bg-white rounded-lg shadow-sm p-8">{renderContent()}</div>
             </div>
           </div>
         </div>
@@ -551,7 +559,7 @@ const AccountDashboard = () => {
               Logout
             </button>
           </div>
-          
+
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar Navigation */}
             <div className="lg:w-64">
@@ -568,8 +576,8 @@ const AccountDashboard = () => {
                           <button
                             onClick={() => setActiveTab(item.id)}
                             className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors duration-200 ${
-                              activeTab === item.id 
-                                ? 'bg-green-100 text-primary font-medium' 
+                              activeTab === item.id
+                                ? 'bg-green-100 text-primary font-medium'
                                 : 'text-gray-600 hover:bg-gray-100'
                             }`}
                           >
@@ -586,9 +594,7 @@ const AccountDashboard = () => {
 
             {/* Main Content */}
             <div className="flex-1">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                {renderContent()}
-              </div>
+              <div className="bg-white rounded-lg shadow-sm p-6">{renderContent()}</div>
             </div>
           </div>
         </div>

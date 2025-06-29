@@ -1,27 +1,21 @@
-import { Metadata } from 'next'
-import { StateContext } from '../context/StateContext'
-import { WishlistProvider } from '../context/WishlistContext'
-import '../styles/globals.css'
+import { Metadata } from 'next';
+import { StateContext } from '../context/StateContext';
+import { WishlistProvider } from '../context/WishlistContext';
+import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'UDT Store - Complete E-commerce Solution',
   description: 'Modern e-commerce store with tools, electronics, and more',
-}
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
         <StateContext>
-          <WishlistProvider>
-            {children}
-          </WishlistProvider>
+          <WishlistProvider>{children}</WishlistProvider>
         </StateContext>
       </body>
     </html>
-  )
+  );
 }

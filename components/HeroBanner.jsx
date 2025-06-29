@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -14,30 +14,30 @@ const HeroBanner = ({ heroBanner }) => {
     { name: 'Breakfast & Cereal', icon: '🥣' },
     { name: 'Frozen Foods', icon: '❄️' },
     { name: 'Biscuits & Snacks', icon: '🍪' },
-    { name: 'Grocery & Staples', icon: '🌾' }
+    { name: 'Grocery & Staples', icon: '🌾' },
   ];
 
   const services = [
     {
       icon: <FiTruck className="w-12 h-12" />,
       title: 'Free Shipping',
-      subtitle: 'Free shipping with discount'
+      subtitle: 'Free shipping with discount',
     },
     {
       icon: <FiHeadphones className="w-12 h-12" />,
       title: 'Great Support 24/7',
-      subtitle: 'Instant access to Contact'
+      subtitle: 'Instant access to Contact',
     },
     {
       icon: <FiShield className="w-12 h-12" />,
       title: '100% Secure',
-      subtitle: 'We ensure your money is safe'
+      subtitle: 'We ensure your money is safe',
     },
     {
       icon: <FiRefreshCw className="w-12 h-12" />,
       title: 'Money-Back',
-      subtitle: '30 days money-back'
-    }
+      subtitle: '30 days money-back',
+    },
   ];
 
   return (
@@ -56,7 +56,7 @@ const HeroBanner = ({ heroBanner }) => {
               </div>
               <div className="p-2">
                 {categories.map((category, index) => (
-                  <Link 
+                  <Link
                     key={index}
                     href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                     className="flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors duration-200 border-b border-gray-100"
@@ -75,13 +75,17 @@ const HeroBanner = ({ heroBanner }) => {
             <div className="flex-1 bg-gradient-to-r from-green-100 via-green-50 to-orange-50 rounded-lg overflow-hidden relative">
               <div className="flex h-96">
                 <div className="flex-1 p-12 flex flex-col justify-center">
-                  <div className="text-sm text-primary font-medium mb-2">Best Deal Online on Smart Watches</div>
+                  <div className="text-sm text-primary font-medium mb-2">
+                    Best Deal Online on Smart Watches
+                  </div>
                   <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                    Get up to<br />
+                    Get up to
+                    <br />
                     <span className="text-primary">-30% off</span>
                   </h1>
                   <p className="text-gray-600 mb-6">
-                    Don&apos;t miss out on our amazing grocery deals!<br />
+                    Don&apos;t miss out on our amazing grocery deals!
+                    <br />
                     Fresh products at unbeatable prices.
                   </p>
                   <Link href="/shop">
@@ -93,8 +97,8 @@ const HeroBanner = ({ heroBanner }) => {
                 </div>
                 <div className="flex-1 relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <img 
-                      src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp" 
+                    <img
+                      src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
                       alt="Featured Products"
                       className="max-w-full max-h-full object-contain"
                     />
@@ -120,9 +124,7 @@ const HeroBanner = ({ heroBanner }) => {
             {services.map((service, index) => (
               <div key={index} className="text-center">
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 bg-gray-100 rounded-full text-primary">
-                    {service.icon}
-                  </div>
+                  <div className="p-4 bg-gray-100 rounded-full text-primary">{service.icon}</div>
                 </div>
                 <h4 className="font-semibold text-lg text-gray-900 mb-2">{service.title}</h4>
                 <p className="text-sm text-gray-600">{service.subtitle}</p>

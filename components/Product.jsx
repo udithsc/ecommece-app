@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -9,14 +9,14 @@ import { useStateContext } from '../context/StateContext';
 const Product = ({ product }) => {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { onAdd } = useStateContext();
-  
+
   const { image, name, slug, price, _id } = product;
   const inWishlist = isInWishlist(_id);
 
   const handleWishlistToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (inWishlist) {
       removeFromWishlist(_id);
     } else {
@@ -34,13 +34,13 @@ const Product = ({ product }) => {
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
       <div className="relative">
         <Link href={`/product/${slug}`}>
-          <img 
-            src={image && image[0]} 
+          <img
+            src={image && image[0]}
             alt={name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </Link>
-        
+
         {/* Wishlist Button */}
         <button
           onClick={handleWishlistToggle}
@@ -64,7 +64,7 @@ const Product = ({ product }) => {
           </button>
         </div>
       </div>
-      
+
       <div className="p-4">
         <Link href={`/product/${slug}`}>
           <h3 className="font-medium text-gray-900 mb-2 hover:text-primary cursor-pointer transition-colors">

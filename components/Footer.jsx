@@ -12,11 +12,13 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
               <h3 className="text-2xl font-bold text-white mb-2">Subscribe to our Newsletter</h3>
-              <p className="text-green-100">Get all the latest information on Events, Sales and Offers.</p>
+              <p className="text-green-100">
+                Get all the latest information on Events, Sales and Offers.
+              </p>
             </div>
             <div className="flex w-full md:w-auto">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Email Address"
                 className="flex-1 md:w-80 px-4 py-3 rounded-l-lg border-0 focus:outline-none focus:ring-2 focus:ring-green-300"
               />
@@ -36,8 +38,8 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-bold mb-6">UDT Store</h3>
               <p className="text-gray-300 mb-6">
-                Your one-stop destination for fresh groceries and daily essentials. 
-                We provide quality products at affordable prices.
+                Your one-stop destination for fresh groceries and daily essentials. We provide
+                quality products at affordable prices.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
@@ -59,11 +61,40 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                <li><Link href="/about" className="text-gray-300 hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link href="/contact" className="text-gray-300 hover:text-primary transition-colors">Contact Us</Link></li>
-                <li><Link href="/careers" className="text-gray-300 hover:text-primary transition-colors">Careers</Link></li>
-                <li><Link href="/blog" className="text-gray-300 hover:text-primary transition-colors">Blog</Link></li>
-                <li><Link href="/faq" className="text-gray-300 hover:text-primary transition-colors">FAQ</Link></li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/careers"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-gray-300 hover:text-primary transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className="text-gray-300 hover:text-primary transition-colors">
+                    FAQ
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -71,11 +102,46 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Customer Service</h4>
               <ul className="space-y-3">
-                <li><Link href="/shipping" className="text-gray-300 hover:text-primary transition-colors">Shipping Info</Link></li>
-                <li><Link href="/returns" className="text-gray-300 hover:text-primary transition-colors">Returns & Exchanges</Link></li>
-                <li><Link href="/size-guide" className="text-gray-300 hover:text-primary transition-colors">Size Guide</Link></li>
-                <li><Link href="/track-order" className="text-gray-300 hover:text-primary transition-colors">Track Your Order</Link></li>
-                <li><Link href="/support" className="text-gray-300 hover:text-primary transition-colors">Support</Link></li>
+                <li>
+                  <Link
+                    href="/shipping"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Shipping Info
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/returns"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Returns & Exchanges
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/size-guide"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Size Guide
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/track-order"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Track Your Order
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/support"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    Support
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -86,16 +152,28 @@ const Footer = () => {
                 Stay connected with us on social media for updates and offers.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                >
                   <AiFillFacebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                >
                   <AiOutlineTwitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                >
                   <AiFillInstagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                >
                   <AiFillYoutube className="w-5 h-5" />
                 </a>
               </div>
@@ -112,14 +190,24 @@ const Footer = () => {
               © 2024 UDT Store. All rights reserved.
             </div>
             <div className="flex items-center space-x-6">
-              <Link href="/privacy" className="text-gray-300 hover:text-primary text-sm transition-colors">
+              <Link
+                href="/privacy"
+                className="text-gray-300 hover:text-primary text-sm transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-300 hover:text-primary text-sm transition-colors">
+              <Link
+                href="/terms"
+                className="text-gray-300 hover:text-primary text-sm transition-colors"
+              >
                 Terms of Service
               </Link>
               <div className="flex space-x-2">
-                <img src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp" alt="Payment" className="h-6" />
+                <img
+                  src="/public/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp"
+                  alt="Payment"
+                  className="h-6"
+                />
               </div>
             </div>
           </div>

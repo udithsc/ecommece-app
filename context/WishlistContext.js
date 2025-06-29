@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
@@ -22,8 +22,8 @@ export const WishlistProvider = ({ children }) => {
   }, [wishlistItems]);
 
   const addToWishlist = (product) => {
-    const isAlreadyInWishlist = wishlistItems.find(item => item._id === product._id);
-    
+    const isAlreadyInWishlist = wishlistItems.find((item) => item._id === product._id);
+
     if (isAlreadyInWishlist) {
       toast.error('Product already in wishlist');
       return;
@@ -34,16 +34,16 @@ export const WishlistProvider = ({ children }) => {
   };
 
   const removeFromWishlist = (productId) => {
-    const product = wishlistItems.find(item => item._id === productId);
-    setWishlistItems(wishlistItems.filter(item => item._id !== productId));
-    
+    const product = wishlistItems.find((item) => item._id === productId);
+    setWishlistItems(wishlistItems.filter((item) => item._id !== productId));
+
     if (product) {
       toast.success(`${product.name} removed from wishlist`);
     }
   };
 
   const isInWishlist = (productId) => {
-    return wishlistItems.some(item => item._id === productId);
+    return wishlistItems.some((item) => item._id === productId);
   };
 
   const clearWishlist = () => {

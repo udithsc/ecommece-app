@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ const ShopContent = ({ products }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   const categories = useMemo(() => {
-    const cats = ['all', ...new Set(products?.map(p => p.category) || [])];
+    const cats = ['all', ...new Set(products?.map((p) => p.category) || [])];
     return cats;
   }, [products]);
 
@@ -23,12 +23,12 @@ const ShopContent = ({ products }) => {
 
     // Filter by category
     if (filterCategory !== 'all') {
-      filtered = filtered.filter(product => product.category === filterCategory);
+      filtered = filtered.filter((product) => product.category === filterCategory);
     }
 
     // Filter by price range
-    filtered = filtered.filter(product => 
-      product.price >= priceRange.min && product.price <= priceRange.max
+    filtered = filtered.filter(
+      (product) => product.price >= priceRange.min && product.price <= priceRange.max
     );
 
     // Sort products
@@ -57,26 +57,30 @@ const ShopContent = ({ products }) => {
     for (let i = 0; i < fullStars; i++) {
       stars.push(<AiFillStar key={i} className="text-yellow-400" />);
     }
-    
+
     for (let i = 0; i < remainingStars; i++) {
       stars.push(<AiOutlineStar key={`empty-${i}`} className="text-gray-300" />);
     }
-    
+
     return stars;
   };
 
   const ProductCard = ({ product, isListView = false }) => (
-    <div className={`bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${isListView ? 'flex' : ''}`}>
+    <div
+      className={`bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${isListView ? 'flex' : ''}`}
+    >
       <div className={`relative ${isListView ? 'flex-shrink-0' : ''}`}>
         {product.badges && product.badges.length > 0 && (
           <div className="absolute top-3 left-3 z-10">
             {product.badges.map((badge, index) => (
-              <span 
+              <span
                 key={index}
                 className={`px-2 py-1 text-xs font-bold rounded-full uppercase ${
-                  badge === 'SALE' ? 'bg-red-100 text-red-800' : 
-                  badge === 'HOT' ? 'bg-orange-100 text-orange-800' : 
-                  'bg-blue-100 text-blue-800'
+                  badge === 'SALE'
+                    ? 'bg-red-100 text-red-800'
+                    : badge === 'HOT'
+                      ? 'bg-orange-100 text-orange-800'
+                      : 'bg-blue-100 text-blue-800'
                 }`}
               >
                 {badge}
@@ -85,8 +89,8 @@ const ShopContent = ({ products }) => {
           </div>
         )}
         <Link href={`/product/${product.slug}`}>
-          <img 
-            src={product.image[0]} 
+          <img
+            src={product.image[0]}
             alt={product.name}
             className={`object-cover cursor-pointer hover:scale-105 transition-transform duration-300 ${
               isListView ? 'w-48 h-48' : 'w-full h-64'
@@ -94,34 +98,34 @@ const ShopContent = ({ products }) => {
           />
         </Link>
       </div>
-      
+
       <div className={`p-4 ${isListView ? 'flex-1' : ''}`}>
         <Link href={`/product/${product.slug}`}>
-          <h3 className={`font-medium text-gray-900 mb-2 hover:text-green-600 cursor-pointer ${
-            isListView ? 'text-lg' : 'text-sm'
-          }`}>
+          <h3
+            className={`font-medium text-gray-900 mb-2 hover:text-green-600 cursor-pointer ${
+              isListView ? 'text-lg' : 'text-sm'
+            }`}
+          >
             {product.name}
           </h3>
         </Link>
-        
+
         <div className="flex items-center mb-2">
-          <div className="flex space-x-1">
-            {renderStars(product.rating)}
-          </div>
+          <div className="flex space-x-1">{renderStars(product.rating)}</div>
           <span className="text-sm text-gray-500 ml-2">({product.reviews})</span>
         </div>
-        
-        {isListView && (
-          <p className="text-gray-600 mb-3">{product.details}</p>
-        )}
-        
+
+        {isListView && <p className="text-gray-600 mb-3">{product.details}</p>}
+
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className={`font-bold text-gray-900 ${isListView ? 'text-xl' : 'text-lg'}`}>
               ${product.price.toFixed(2)}
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">${product.originalPrice.toFixed(2)}</span>
+              <span className="text-sm text-gray-500 line-through">
+                ${product.originalPrice.toFixed(2)}
+              </span>
             )}
           </div>
           <span className="text-sm text-green-600 font-medium">{product.category}</span>
@@ -136,7 +140,9 @@ const ShopContent = ({ products }) => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="text-sm">
-            <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-gray-700">
+              Home
+            </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-gray-900">Shop</span>
           </nav>
@@ -149,7 +155,7 @@ const ShopContent = ({ products }) => {
           <div className={`lg:w-64 ${showFilters ? 'block' : 'hidden lg:block'}`}>
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-semibold mb-4">Filters</h3>
-              
+
               {/* Category Filter */}
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Category</h4>
@@ -182,7 +188,9 @@ const ShopContent = ({ products }) => {
                       min="0"
                       max="2000"
                       value={priceRange.max}
-                      onChange={(e) => setPriceRange({...priceRange, max: parseInt(e.target.value)})}
+                      onChange={(e) =>
+                        setPriceRange({ ...priceRange, max: parseInt(e.target.value) })
+                      }
                       className="w-full"
                     />
                     <div className="flex justify-between text-sm text-gray-500 mt-1">
@@ -212,7 +220,7 @@ const ShopContent = ({ products }) => {
                     Showing {filteredAndSortedProducts.length} products
                   </span>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   {/* View Mode Toggle */}
                   <div className="flex border rounded-lg overflow-hidden">
@@ -246,17 +254,15 @@ const ShopContent = ({ products }) => {
             </div>
 
             {/* Products Grid/List */}
-            <div className={
-              viewMode === 'grid' 
-                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-                : 'space-y-6'
-            }>
+            <div
+              className={
+                viewMode === 'grid'
+                  ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
+                  : 'space-y-6'
+              }
+            >
               {filteredAndSortedProducts.map((product) => (
-                <ProductCard 
-                  key={product._id} 
-                  product={product} 
-                  isListView={viewMode === 'list'}
-                />
+                <ProductCard key={product._id} product={product} isListView={viewMode === 'list'} />
               ))}
             </div>
 

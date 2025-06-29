@@ -11,14 +11,12 @@ export async function POST(request: NextRequest) {
       mode: 'payment',
       payment_method_types: ['card'],
       billing_address_collection: 'auto',
-      shipping_options: [
-        { shipping_rate: 'shr_1NViCELkdIwHu7ixaXMQg8LQ' },
-      ],
+      shipping_options: [{ shipping_rate: 'shr_1NViCELkdIwHu7ixaXMQg8LQ' }],
       line_items: cartItems.map((item: any) => {
         return {
-          price_data: { 
+          price_data: {
             currency: 'usd',
-            product_data: { 
+            product_data: {
               name: item.name,
               images: [item.image[0]],
             },
@@ -28,12 +26,12 @@ export async function POST(request: NextRequest) {
             enabled: true,
             minimum: 1,
           },
-          quantity: item.quantity
-        }
+          quantity: item.quantity,
+        };
       }),
       success_url: `${request.headers.get('origin')}/success`,
       cancel_url: `${request.headers.get('origin')}/canceled`,
-    }
+    };
 
     const session = await stripe.checkout.sessions.create(params);
 

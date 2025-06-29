@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -7,10 +7,11 @@ import { FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
 import { useStateContext } from '../context/StateContext';
 
 const CartPage = () => {
-  const { cartItems, totalPrice, totalQuantities, onRemove, toggleCartItemQuanitity } = useStateContext();
+  const { cartItems, totalPrice, totalQuantities, onRemove, toggleCartItemQuanitity } =
+    useStateContext();
   const [couponCode, setCouponCode] = useState('');
 
-  const shippingCost = 25.00;
+  const shippingCost = 25.0;
   const tax = totalPrice * 0.08;
   const discount = 0; // Apply coupon discount here
   const finalTotal = totalPrice + shippingCost + tax - discount;
@@ -21,7 +22,9 @@ const CartPage = () => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-primary">
+              Home
+            </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-gray-900">Cart</span>
           </nav>
@@ -32,12 +35,24 @@ const CartPage = () => {
         {cartItems.length === 0 ? (
           <div className="text-center py-16">
             <div className="mb-8">
-              <svg className="w-24 h-24 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.68 1.68M7 13l4.32 4.32M17 17a2 2 0 11-4 0 2 2 0 014 0zM9 17a2 2 0 11-4 0 2 2 0 014 0z" />
+              <svg
+                className="w-24 h-24 mx-auto text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.68 1.68M7 13l4.32 4.32M17 17a2 2 0 11-4 0 2 2 0 014 0zM9 17a2 2 0 11-4 0 2 2 0 014 0z"
+                />
               </svg>
             </div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your cart is empty</h2>
-            <p className="text-gray-600 mb-8">Looks like you haven&apos;t added any items to your cart yet.</p>
+            <p className="text-gray-600 mb-8">
+              Looks like you haven&apos;t added any items to your cart yet.
+            </p>
             <Link href="/shop">
               <button className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold">
                 Continue Shopping
@@ -56,7 +71,7 @@ const CartPage = () => {
                     <span className="text-gray-600">{totalQuantities} items</span>
                   </div>
                 </div>
-                
+
                 {/* Cart Items Table */}
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -75,17 +90,15 @@ const CartPage = () => {
                           <td className="p-4">
                             <div className="flex items-center space-x-4">
                               <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
-                                <img 
-                                  src={item.image[0]} 
+                                <img
+                                  src={item.image[0]}
                                   alt={item.name}
                                   className="w-full h-full object-cover"
                                 />
                               </div>
                               <div>
                                 <h3 className="font-medium text-gray-900 hover:text-primary cursor-pointer">
-                                  <Link href={`/product/${item.slug}`}>
-                                    {item.name}
-                                  </Link>
+                                  <Link href={`/product/${item.slug}`}>{item.name}</Link>
                                 </h3>
                                 <p className="text-sm text-gray-500">In Stock</p>
                               </div>
@@ -93,14 +106,14 @@ const CartPage = () => {
                           </td>
                           <td className="p-4">
                             <div className="flex items-center justify-center space-x-2">
-                              <button 
+                              <button
                                 onClick={() => toggleCartItemQuanitity(item._id, 'dec')}
                                 className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                               >
                                 <AiOutlineMinus className="w-3 h-3" />
                               </button>
                               <span className="w-12 text-center font-medium">{item.quantity}</span>
-                              <button 
+                              <button
                                 onClick={() => toggleCartItemQuanitity(item._id, 'inc')}
                                 className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                               >
@@ -109,13 +122,17 @@ const CartPage = () => {
                             </div>
                           </td>
                           <td className="p-4 text-right">
-                            <span className="font-medium text-gray-900">${item.price.toFixed(2)}</span>
+                            <span className="font-medium text-gray-900">
+                              ${item.price.toFixed(2)}
+                            </span>
                           </td>
                           <td className="p-4 text-right">
-                            <span className="font-bold text-primary">${(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="font-bold text-primary">
+                              ${(item.price * item.quantity).toFixed(2)}
+                            </span>
                           </td>
                           <td className="p-4">
-                            <button 
+                            <button
                               onClick={() => onRemove(item)}
                               className="text-gray-400 hover:text-red-500 transition-colors"
                             >
@@ -127,7 +144,7 @@ const CartPage = () => {
                     </tbody>
                   </table>
                 </div>
-                
+
                 {/* Cart Actions */}
                 <div className="p-6 border-t border-gray-200 bg-gray-50">
                   <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
@@ -136,8 +153,8 @@ const CartPage = () => {
                         ← Continue Shopping
                       </button>
                     </Link>
-                    <button 
-                      onClick={() => cartItems.forEach(item => onRemove(item))}
+                    <button
+                      onClick={() => cartItems.forEach((item) => onRemove(item))}
                       className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm"
                     >
                       Clear All
@@ -156,8 +173,8 @@ const CartPage = () => {
                   <h3 className="font-semibold text-gray-900">Coupon Discount</h3>
                 </div>
                 <div className="space-y-3">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="Enter coupon code"
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
@@ -194,11 +211,13 @@ const CartPage = () => {
                   <div className="border-t pt-3">
                     <div className="flex justify-between">
                       <span className="text-lg font-bold">Total</span>
-                      <span className="text-lg font-bold text-primary">${finalTotal.toFixed(2)}</span>
+                      <span className="text-lg font-bold text-primary">
+                        ${finalTotal.toFixed(2)}
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 <Link href="/checkout">
                   <button className="w-full bg-primary text-white py-4 rounded-lg hover:bg-green-700 transition-colors font-semibold text-lg mt-6">
                     Proceed To Checkout

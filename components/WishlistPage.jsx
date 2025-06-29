@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -22,7 +22,9 @@ const WishlistPage = () => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-primary">
+              Home
+            </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-gray-900">Wishlist</span>
           </nav>
@@ -36,7 +38,9 @@ const WishlistPage = () => {
               <AiOutlineHeart className="w-24 h-24 mx-auto text-gray-300" />
             </div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h2>
-            <p className="text-gray-600 mb-8">Save your favorite items to your wishlist for easy access later.</p>
+            <p className="text-gray-600 mb-8">
+              Save your favorite items to your wishlist for easy access later.
+            </p>
             <Link href="/shop">
               <button className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold">
                 Continue Shopping
@@ -55,7 +59,7 @@ const WishlistPage = () => {
                     <span className="text-gray-600">{wishlistItems.length} items</span>
                   </div>
                 </div>
-                
+
                 {/* Wishlist Items Table */}
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -74,17 +78,15 @@ const WishlistPage = () => {
                           <td className="p-4">
                             <div className="flex items-center space-x-4">
                               <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
-                                <img 
-                                  src={item.image[0]} 
+                                <img
+                                  src={item.image[0]}
                                   alt={item.name}
                                   className="w-full h-full object-cover"
                                 />
                               </div>
                               <div>
                                 <h3 className="font-medium text-gray-900 hover:text-primary cursor-pointer">
-                                  <Link href={`/product/${item.slug}`}>
-                                    {item.name}
-                                  </Link>
+                                  <Link href={`/product/${item.slug}`}>{item.name}</Link>
                                 </h3>
                                 <p className="text-sm text-gray-500">
                                   {item.details?.substring(0, 60)}...
@@ -93,7 +95,9 @@ const WishlistPage = () => {
                             </div>
                           </td>
                           <td className="p-4 text-right">
-                            <span className="font-bold text-primary text-lg">${item.price.toFixed(2)}</span>
+                            <span className="font-bold text-primary text-lg">
+                              ${item.price.toFixed(2)}
+                            </span>
                           </td>
                           <td className="p-4 text-center">
                             <span className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
@@ -101,7 +105,7 @@ const WishlistPage = () => {
                             </span>
                           </td>
                           <td className="p-4 text-center">
-                            <button 
+                            <button
                               onClick={() => handleAddToCart(item)}
                               className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm inline-flex items-center space-x-2"
                             >
@@ -110,7 +114,7 @@ const WishlistPage = () => {
                             </button>
                           </td>
                           <td className="p-4">
-                            <button 
+                            <button
                               onClick={() => removeFromWishlist(item._id)}
                               className="text-gray-400 hover:text-red-500 transition-colors"
                             >
@@ -122,7 +126,7 @@ const WishlistPage = () => {
                     </tbody>
                   </table>
                 </div>
-                
+
                 {/* Wishlist Actions */}
                 <div className="p-6 border-t border-gray-200 bg-gray-50">
                   <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
@@ -132,15 +136,15 @@ const WishlistPage = () => {
                       </button>
                     </Link>
                     <div className="flex space-x-4">
-                      <button 
+                      <button
                         onClick={() => {
-                          wishlistItems.forEach(item => handleAddToCart(item));
+                          wishlistItems.forEach((item) => handleAddToCart(item));
                         }}
                         className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium"
                       >
                         Add All to Cart
                       </button>
-                      <button 
+                      <button
                         onClick={clearWishlist}
                         className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm"
                       >

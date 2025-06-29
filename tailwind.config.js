@@ -43,16 +43,16 @@ module.exports = {
           700: '#b91c1c',
           800: '#991b1b',
           900: '#7f1d1d',
-        }
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-      }
+        18: '4.5rem',
+        88: '22rem',
+      },
     },
   },
   plugins: [],
-}
+};
