@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -11,6 +10,10 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
       },
     ],
     dangerouslyAllowSVG: true,

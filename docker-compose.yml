@@ -1,0 +1,54 @@
+# =============================================================================
+# Docker Compose for PRODUCTION SELF-HOSTING (Optional)
+# =============================================================================
+# NOTE: For portfolio projects, use Vercel deployment instead!
+# This file is only for self-hosting on your own servers
+#
+# For Vercel deployment (recommended):
+# 1. Push to GitHub
+# 2. Connect to Vercel
+# 3. Set environment variables in Vercel dashboard
+# 4. Use Vercel Postgres for database
+
+services:
+  # Next.js Application (Production Build)
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: udt-store-prod-web
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      # DATABASE_URL should point to your production PostgreSQL
+      # For Vercel Postgres: postgres://default:xxx@xxx.vercel-storage.com/verceldb
+      DATABASE_URL: ${DATABASE_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+    networks:
+      - udt-store-network
+    volumes:
+      - ./uploads:/app/uploads
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f http://localhost:3000/api/health || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.udt-store.rule=Host(`your-domain.com`)"
+      - "traefik.http.services.udt-store.loadbalancer.server.port=3000"
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  udt-store-network:
+    driver: bridge
