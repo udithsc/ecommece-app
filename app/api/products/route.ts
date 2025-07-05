@@ -110,13 +110,27 @@ import { prisma } from '../../../lib/prisma';
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '10');
-    const category = searchParams.get('category');
-    const search = searchParams.get('search');
+    
+    // Input validation and sanitization
+    const pageParam = searchParams.get('page');
+    const limitParam = searchParams.get('limit');
+    const page = Math.max(1, Math.min(parseInt(pageParam || '1') || 1, 1000)); // Cap at 1000 pages
+    const limit = Math.max(1, Math.min(parseInt(limitParam || '10') || 10, 100)); // Cap at 100 items per page
+    
+    const category = searchParams.get('category')?.slice(0, 100) || null; // Limit length
+    const search = searchParams.get('search')?.slice(0, 100) || null; // Limit search length
     const featured = searchParams.get('featured');
-    const sortBy = searchParams.get('sortBy') || 'createdAt';
-    const sortOrder = searchParams.get('sortOrder') || 'desc';
+    
+    // Whitelist allowed sort fields to prevent injection
+    const allowedSortFields = ['name', 'price', 'createdAt', 'updatedAt'];
+    const sortBy = allowedSortFields.includes(searchParams.get('sortBy') || '') 
+      ? searchParams.get('sortBy')! 
+      : 'createdAt';
+    
+    // Validate sort order
+    const sortOrder = ['asc', 'desc'].includes(searchParams.get('sortOrder') || '') 
+      ? searchParams.get('sortOrder')! as 'asc' | 'desc'
+      : 'desc';
 
     const skip = (page - 1) * limit;
 

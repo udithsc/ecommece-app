@@ -3,7 +3,7 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import sharp from 'sharp';
-import { auth } from '@/auth';
+import { auth } from '../../../../auth';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
@@ -48,8 +48,18 @@ export async function POST(request: NextRequest) {
         }, { status: 400 });
       }
 
-      // Generate unique filename
-      const fileExtension = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+      // Sanitize and validate filename
+      const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '');
+      const fileExtension = sanitizedName.split('.').pop()?.toLowerCase() || 'jpg';
+      
+      // Additional file extension validation
+      const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+      if (!allowedExtensions.includes(fileExtension)) {
+        return NextResponse.json({ 
+          error: `Invalid file extension: ${fileExtension}. Allowed: ${allowedExtensions.join(', ')}` 
+        }, { status: 400 });
+      }
+      
       const uniqueFilename = `${uuidv4()}.${fileExtension}`;
       const optimizedFilename = `${uuidv4()}.webp`;
       
@@ -121,6 +131,17 @@ export async function DELETE(request: NextRequest) {
 
     if (!filename) {
       return NextResponse.json({ error: 'Filename required' }, { status: 400 });
+    }
+    
+    // Prevent path traversal attacks
+    if (filename.includes('../') || filename.includes('..\\') || filename.includes('/') || filename.includes('\\')) {
+      return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });
+    }
+    
+    // Validate filename format (UUID + extension)
+    const filenameRegex = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\.(webp|jpg|jpeg|png|gif)$/;
+    if (!filenameRegex.test(filename)) {
+      return NextResponse.json({ error: 'Invalid filename format' }, { status: 400 });
     }
 
     // Delete main image and thumbnail
