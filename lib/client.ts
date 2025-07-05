@@ -22,7 +22,7 @@ interface Banner {
 // API data store functions (for client-side use)
 export const getProducts = async (): Promise<Product[]> => {
   try {
-    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3001';
     const response = await fetch(`${baseUrl}/api/products`);
     if (!response.ok) {
       throw new Error('Failed to fetch products');
@@ -53,7 +53,7 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getProduct = async (slug: string): Promise<Product | undefined> => {
   try {
-    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3001';
     const response = await fetch(`${baseUrl}/api/products/${slug}`);
     if (!response.ok) {
       if (response.status === 404) {
@@ -87,7 +87,7 @@ export const getProduct = async (slug: string): Promise<Product | undefined> => 
 
 export const getFeaturedProducts = async (): Promise<Product[]> => {
   try {
-    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const baseUrl = typeof window !== 'undefined' ? '' : process.env.NEXTAUTH_URL || 'http://localhost:3001';
     const response = await fetch(`${baseUrl}/api/products?featured=true`);
     if (!response.ok) {
       throw new Error('Failed to fetch featured products');

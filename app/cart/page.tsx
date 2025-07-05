@@ -1,4 +1,4 @@
-import { Layout } from '../../components';
+import Layout from '../../components/Layout';
 import CartPage from '../../components/CartPage';
 
 function Cart() {

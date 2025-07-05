@@ -1,4 +1,4 @@
-import { Layout } from '../../components';
+import Layout from '../../components/Layout';
 import AboutContent from '../../components/AboutContent';
 
 function About() {

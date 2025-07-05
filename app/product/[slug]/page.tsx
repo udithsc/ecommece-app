@@ -1,5 +1,5 @@
 import { getProduct, getProducts } from '../../../lib/client';
-import { Layout } from '../../../components';
+import Layout from '../../../components/Layout';
 import ProductDetail from '../../../components/ProductDetail';
 
 interface Props {

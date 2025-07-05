@@ -1,6 +1,6 @@
 'use client';
 
-import { Layout } from '../../components';
+import Layout from '../../components/Layout';
 import WishlistPage from '../../components/WishlistPage';
 
 function Wishlist() {

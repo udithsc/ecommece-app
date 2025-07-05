@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '../../../../../lib/prisma';
 import { withAdmin } from '@/lib/auth';
 
 async function handleGET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {

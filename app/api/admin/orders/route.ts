@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '../../../../../lib/prisma';
 import { withPermission } from '@/lib/auth';
 
 async function handleGET(request: NextRequest) {

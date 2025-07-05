@@ -1,4 +1,4 @@
-import { Layout } from '../../components';
+import Layout from '../../components/Layout';
 import ContactPage from '../../components/ContactPage';
 
 function Contact() {
