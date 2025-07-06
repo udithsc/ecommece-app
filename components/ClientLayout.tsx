@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import PWAInstaller from './PWAInstaller';
+import ChunkLoadMonitor from './ChunkLoadMonitor';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface ClientLayoutProps {
 const ClientLayout: React.FC<ClientLayoutProps> = ({ children }) => {
   return (
     <div className="layout">
+      <ChunkLoadMonitor />
       <header>
         <Navbar />
       </header>

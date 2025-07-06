@@ -9,6 +9,8 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
+    "clear-cache": "node scripts/clear-cache.js",
+    "dev:fresh": "npm run clear-cache && npm run dev",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
